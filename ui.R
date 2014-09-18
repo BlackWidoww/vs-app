@@ -29,27 +29,27 @@ shinyUI(fluidPage(
     Inspection Service."),
   br(),
   helpText(  "Situation reports for current and historical outbreaks are available",
-           a("here", href="http://1.usa.gov/1r2bsbJ", target="_blank")
-           ),
-
+             a("here", href="http://1.usa.gov/1r2bsbJ", target="_blank")
+  ),
+  
   br(),
   br(),
   
   h3("Geographic Outbreak Patterns By Year", style = "color:#8B4513"),
   
-
+  
   
   sidebarLayout(
     
     sidebarPanel(
       selectInput("year", 
-          label = h5("Select Year", style="color:#97582B"), 
-          choices = c("2014", "2012", "2010", "2009", "2006", "2005", "2004"),
-          selected = "2014"),
+                  label = h5("Select Year", style="color:#97582B"), 
+                  choices = c("2014", "2012", "2010", "2009", "2006", "2005", "2004"),
+                  selected = "2014"),
       br(),
       sliderInput("days", 
-          label = h5("Days since Initial Case:", style="color:#A26A42"),
-          min = 0, max=300, value=0),
+                  label = h5("Days since Initial Case:", style="color:#A26A42"),
+                  min = 0, max=300, value=0),
       br(),
       br(),
       br(),
@@ -63,19 +63,19 @@ shinyUI(fluidPage(
       br(),
       em("... Hal Varian", align="right") 
       
-      ),
-  
+    ),
+    
     mainPanel(
       tabsetPanel(
         tabPanel("Map",
-          h3(textOutput("text1"), style="color:#A6790A", align="center"),
-          h5(textOutput("text2"), style="color:#B8860B", align="center"),
-          em(textOutput("text3"), style = "color:OliveDrab"),
-          plotOutput("map"),
-          textOutput("text4")
+                 h3(textOutput("text1"), style="color:#A6790A", align="center"),
+                 h5(textOutput("text2"), style="color:#B8860B", align="center"),
+                 em(textOutput("text3"), style = "color:OliveDrab"),
+                 plotOutput("map"),
+                 textOutput("text4")
         ),
         tabPanel("Statistics")
-    )
+      )
     )
   )
-))
+  ))
