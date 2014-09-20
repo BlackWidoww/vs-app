@@ -4,6 +4,8 @@ shinyUI(navbarPage("vs-app",
                    tabPanel("Overview",
                             sidebarLayout(
                               sidebarPanel(
+                                
+                       ## Overview Tab Dynamic Inputs
                                 selectInput("topic",
                                             label = h5("Select Topic", style="color:#97582B"),
                                             choices = c("Overview", "Diagnosis", "Outbreak Causes", "Outbreak Control"),
@@ -11,6 +13,7 @@ shinyUI(navbarPage("vs-app",
                                 p("All data used is publicly available from",
                                   a(img(src = "USDA-Logo.jpg", height = 75, width = 75), href="http://1.usa.gov/1r2bsbJ", target="_blank")),
                                 
+                       ## Overview Tab Signature Block
                                 img(src = "IMG_9711.jpg", height = 200, width = 200),
                                 a("@BlackWidoww", href="https://github.com/BlackWidoww", target="_blank"),
                                 
@@ -18,7 +21,8 @@ shinyUI(navbarPage("vs-app",
                                 em("I keep saying the sexy job in the next ten years will be statisticians."),
                                 br(),
                                 em("... Hal Varian", align="right")),
-                              
+                       
+                       ## Overview Tab Dynamic Output
                               mainPanel(
                                 h2(textOutput("text1"), style="color:#A6790A", align="center"),
                                 textOutput("text2")))),
@@ -26,11 +30,15 @@ shinyUI(navbarPage("vs-app",
                    tabPanel("Current Outbreak",
                             sidebarLayout(
                               sidebarPanel(
+                                
+                      ## Current Outbreak Dynamic inputs          
                                 h5("Outbreak began on May 23, 2014 in Kinney County, TX"),
                                 sliderInput("days",
                                             label = "Days since initial outbreak",
                                             min = 0, max = as.numeric(Sys.Date()-as.Date("2014/05/23")),
                                             value = 0),
+                                
+                      ## Current Outbreak Signature Block          
                                 img(src = "IMG_9711.jpg", height = 200, width = 200),
                                 a("@BlackWidoww", href="https://github.com/BlackWidoww", target="_blank"),
                                 br(),
@@ -39,7 +47,8 @@ shinyUI(navbarPage("vs-app",
                                 em("I keep saying the sexy job in the next ten years will be statisticians."),
                                 br(),
                                 em("... Hal Varian", align="right")),
-                              
+                        
+                      ## Current Outbreak Dynamic Output
                               mainPanel(
                                 tabsetPanel(
                                   tabPanel("Overview",
@@ -64,13 +73,15 @@ shinyUI(navbarPage("vs-app",
                                              began spreading more rapidly by the end of July.  On July 30, 2014 thirty-five (35) new premises were confirmed: twelve (12) 
                                              equine premises and two (2) bovine premises in Texas and twenty-one (21) equine premises in Colorado.")),
                                   
-                   tabPanel("Map",
+                          tabPanel("Map",
                                            
-                                           plotOutput("map")),
+                                           plotOutput("map1"),
+                                           textOutput("text3")),
                                   
-                                  tabPanel("Statistics"))))),
+                          tabPanel("Statistics"))))),
                    
                    tabPanel("Historic Outbreaks",
+                        ## Historic Tab Dynamic Inputs    
                             sidebarLayout(
                               sidebarPanel(
                                 selectInput("year", 
@@ -80,6 +91,8 @@ shinyUI(navbarPage("vs-app",
                                 sliderInput("days",
                                             label = h5("Days since Initial Case:", style="color:#A26A42"),
                                             min = 0, max=300, value=0),
+                        
+                        ## Historic Tab Signature Block        
                                 img(src = "IMG_9711.jpg", height = 200, width = 200),
                                 a("@BlackWidoww", href="https://github.com/BlackWidoww", target="_blank"),
                                 br(),
@@ -89,10 +102,13 @@ shinyUI(navbarPage("vs-app",
                                 br(),
                                 em("... Hal Varian", align="right")),
                               
+                        ## Historic Tab Dynamic Outputs
                               mainPanel(
                                 tabsetPanel(
-                                  tabPanel("Overview"),
-                                  tabPanel("Map"),
+                                  tabPanel("Overview",
+                                           h3(textOutput("text4"), style="color:#97582B", align="center"),
+                                           textOutput("text5")),
+                                  tabPanel("Map",
+                                           plotOutput("map2")),
                                   tabPanel("Statistics")))))
                               )) 
-
